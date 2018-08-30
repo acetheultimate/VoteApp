@@ -1,0 +1,39 @@
+<html>
+    <title>VoteApp Admin Dashboard</title>
+    <body>
+        <h1>Hello {{name}} (Admin)!</h1>
+        <form action="/login" method="POST">
+            <button type="submit" name="action" value="LogOut">LogOut</button> 
+        </form>
+        <a href='{{ url_for("user_dash") }}'>User View</a>
+        <h3>List of Nominees:</h3>
+        {% if DB["nominees"]|length > 0 %}
+        <form action="" method="post">
+        <table border="1px">
+            <thead><td>Name</td><td>Vote Count</td><td>Action</td></thead>
+            {% for name in DB["nominees"] %}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{ DB["nominees"][name] }}</td>
+                <td>
+                    <button type="submit" name="action" value="d_{{ name }}">Delete</button> 
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        </form>
+        {% else %}
+        No nominee is there to Vote for.
+        {% endif %}
+        <hr>
+        <form action="" method="post">
+            <dl>
+               <dt>Candidate Name</dt>
+               <dd>
+                  <input type="text" name="nid">
+               </dd>
+            </dl>
+            <p><button type="submit" name="action" value="add">Add</button> </p>
+         </form>
+    </body>
+</html>

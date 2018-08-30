@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+   <body>
+      <h1>VoteApp Login</h1>
+      {% if error %}
+        <pre style="color:red">{{ error }}</pre>
+      {% endif %}
+      {% if msg %}
+        <pre style="color:green">{{ msg }}</pre>
+      {% endif %}
+      
+      <form action="/login" method="post">
+         <dl>
+            <dt>Username:</dt>
+            <dd>
+               <input type="text" name="uid">
+            </dd>
+            <dt>Password:</dt>
+            <dd><input type="password" name="password"></dd>
+         </dl>
+         <p><input type="submit" name="action" value="Login"></p>
+         <p><input type="submit" name="action" value="Register"></p>
+      </form>    
+   </body>
+</html>
